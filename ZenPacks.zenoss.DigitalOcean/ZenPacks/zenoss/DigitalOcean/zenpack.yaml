@@ -1,1 +1,68 @@
 name: ZenPacks.zenoss.DigitalOcean
+
+zProperties:
+  DEFAULTS:
+    category: Digital Ocean
+  
+  zDigitalOceanApiEndpoint:
+    description: "Only use this if you need to specify an endpoint other than the default.  https://api.digitalocean.com/v2/"
+    type: string
+    default: "https://api.digitalocean.com/v2/"
+
+  zDigitalOceanToken:
+    description: "api token for accessing your Digital Ocean account."
+    type: string
+
+classes:
+  DEFAULTS:
+    base: [zenpacklib.Component]
+
+  DigitalOceanDevice:
+    base: [zenpacklib.Device]
+    label: Digital Ocean Device
+
+  Droplet:
+    label: Droplet
+
+    properties:
+      created_at:
+        label: Creation DateTime
+
+      backups:
+        label: Backups enabled
+
+      vcpus:
+        label: VCPUs
+
+      disk:
+        label: Disk GB
+
+      id:
+        label: Droplet ID
+
+      image:
+        label: Image ID
+      
+      ip_address:
+        label: Public IP
+
+      private_ip_address:
+        label: Private IP
+
+      memory:
+        label: Memory GB
+
+      name:
+        label: Droplet Name
+
+      region:
+        label: Region
+
+      price_hourly:
+        label: Price Hourly
+
+      price_monthly:
+        label: Price Monthly
+
+class_relationships:
+  - DigitalOceanDevice 1:MC Droplet

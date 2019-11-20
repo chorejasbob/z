@@ -53,7 +53,9 @@ setup(
     # list, so any manual additions should be added to the end.  Things will
     # go poorly if this line is broken into multiple lines or modified to
     # dramatically.
-    install_requires=INSTALL_REQUIRES,
+    install_requires=[
+        'python-digitalocean'
+    ],
 
     # Every ZenPack egg must define exactly one zenoss.zenpacks entry point
     # of this form.
