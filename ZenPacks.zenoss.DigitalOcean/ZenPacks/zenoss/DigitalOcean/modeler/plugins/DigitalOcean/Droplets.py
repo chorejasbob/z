@@ -72,6 +72,7 @@ class Droplets(PythonPlugin):
         log.info("Processing results for device %s." % device.id)
         rm = self.relMap()
         for droplet in droplets:
+            name = self.prepId(droplet.name)
             rm.append(self.objectMap({
                 'created_at': droplet.created_at,
                 'backups': droplet.backups,
@@ -82,8 +83,8 @@ class Droplets(PythonPlugin):
                 'ip_address': droplet.ip_address,
                 'private_ip_address': droplet.private_ip_address,
                 'memory': droplet.memory,
-                'name': droplet.name,
-                'id': droplet.name,
+                'name': name,
+                'id': name,
                 'region': droplet.region
             }))
 
