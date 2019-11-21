@@ -75,6 +75,7 @@ class Droplets(PythonPlugin):
             region = self.prepId(droplet.region.get('name'))
             image = self.prepId(droplet.image.get('name'))
             rm.append(self.objectMap({
+                'id': name,
                 'created_at': droplet.created_at,
                 'backups': droplet.backups,
                 'vcpus': droplet.vcpus,
