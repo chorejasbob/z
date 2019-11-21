@@ -83,9 +83,7 @@ class Droplets(PythonPlugin):
                 'private_ip_address': droplet.private_ip_address,
                 'memory': droplet.memory,
                 'name': droplet.name,
-                'region': droplet.region,
-                'price_hourly': droplet.price_hourly,
-                'price_monthly': droplet.price_monthly
+                'region': droplet.region
             }))
 
         return rm
