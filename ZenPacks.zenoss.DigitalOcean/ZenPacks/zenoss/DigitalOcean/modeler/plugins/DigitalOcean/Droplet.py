@@ -21,13 +21,15 @@ class Droplets(PythonPlugin):
         """Model device and return a deferred."""
         log.info("%s: collecting data", device.id)
 
-        if not zDigitalOceanToken:
+        token = getattr(device, 'zDigitalOceanToken')
+
+        if not token:
             log.error("zDigitalOceanToken not set.")
 
             returnValue(None)
 
         #Setup the Connection to Digital Oceans API endpoint.
-        manager = digitalocean.Manager(token=zDigitalOceanToken)
+        manager = digitalocean.Manager(token=token)
         try:
             droplets = yield manager.get_all_droplets()
         except Exception as err:
