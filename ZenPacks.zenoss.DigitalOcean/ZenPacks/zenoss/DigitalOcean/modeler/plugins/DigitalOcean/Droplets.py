@@ -19,7 +19,7 @@ log = getLogger('zen.DigitalOcean')
 class Droplets(PythonPlugin):
     """Digital Ocean Droplet modeler plugin."""
 
-    relname = 'Droplets'
+    relname = 'droplets'
     modname = 'ZenPacks.zenoss.DigitalOcean.Droplet'
 
     requiredProperties = (

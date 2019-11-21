@@ -21,8 +21,8 @@ classes:
     base: [zenpacklib.Device]
     label: Digital Ocean Endpoint
 
-  droplet:
-    label: droplet
+  Droplet:
+    label: Droplet
 
     properties:
       created_at:
@@ -65,7 +65,7 @@ classes:
         label: Price Monthly
 
 class_relationships:
-  - DigitalOceanEndpoint 1:MC droplet
+  - DigitalOceanEndpoint 1:MC Droplet
 
 device_classes:
   /DigitalOcean:
