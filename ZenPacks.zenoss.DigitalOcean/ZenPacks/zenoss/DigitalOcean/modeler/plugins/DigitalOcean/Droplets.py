@@ -11,7 +11,7 @@
 
 import digitalocean
 from twisted.internet.defer import inlineCallbacks, returnValue, DeferredList
-from Products.DataCollector.plugins.CollectorPlugins import PythonPlugin
+from Products.DataCollector.plugins.CollectorPlugin import PythonPlugin
 from logging import getLogger
 
 log = getLogger('zen.DigitalOcean')
