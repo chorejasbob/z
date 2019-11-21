@@ -17,9 +17,9 @@ classes:
   DEFAULTS:
     base: [zenpacklib.Component]
 
-  DigitalOceanDevice:
+  DigitalOceanEndpoint:
     base: [zenpacklib.Device]
-    label: Digital Ocean Device
+    label: Digital Ocean Endpoint
 
   Droplet:
     label: Droplet
@@ -65,12 +65,12 @@ classes:
         label: Price Monthly
 
 class_relationships:
-  - DigitalOceanDevice 1:MC Droplet
+  - DigitalOceanEndpoint 1:MC Droplet
 
 device_classes:
   /DigitalOcean:
     zProperties:
-      zPythonClass: ZenPacks.zenoss.DigitalOcean.DigitalOceanDevice
+      zPythonClass: ZenPacks.zenoss.DigitalOcean.DigitalOceanEndpoint
       zPingMonitorIgnore: true
       zSnmpMonitorIgnore: true
       zCollectorPlugins:
