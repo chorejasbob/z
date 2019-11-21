@@ -70,8 +70,8 @@ class_relationships:
 device_classes:
   /DigitalOcean:
     zProperties:
-      zPythonClass: ZenPacks.zenoss.DigitalOcean.Droplet.DigitalOceanDevice
+      zPythonClass: ZenPacks.zenoss.DigitalOcean.DigitalOceanDevice
       zPingMonitorIgnore: true
       zSnmpMonitorIgnore: true
       zCollectorPlugins:
-        - DigitalOcean.Droplet
+        - DigitalOcean.Droplets

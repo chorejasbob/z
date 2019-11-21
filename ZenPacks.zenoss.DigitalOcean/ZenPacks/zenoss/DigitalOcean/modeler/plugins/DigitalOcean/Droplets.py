@@ -1,7 +1,22 @@
-import json
+##############################################################################
+#
+# Copyright (C) Zenoss, Inc. 2013-2019, all rights reserved.
+#
+# This content is made available according to terms specified in
+# License.zenoss under the directory where your Zenoss product is installed.
+#
+##############################################################################
+
+'''
+Models Digital Ocean Droplets.
+'''
+
 import digitalocean
 from twisted.internet.defer import inlineCallbacks, returnValue, DeferredList
 from Products.DataCollector.plugins.CollectorPlugins import PythonPlugin
+from logging import getLogger
+
+log = getLogger('zen.DigitalOcean')
 
 class Droplets(PythonPlugin):
     """Digital Ocean Droplet modeler plugin."""
