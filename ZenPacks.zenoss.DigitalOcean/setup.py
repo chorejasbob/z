@@ -3,7 +3,7 @@
 # or saved.  Do not modify them directly here.
 # NB: PACKAGES is deprecated
 NAME = "ZenPacks.zenoss.DigitalOcean"
-VERSION = "1.0.1dev"
+VERSION = "1.0.2dev"
 AUTHOR = "Your Name Here"
 LICENSE = ""
 NAMESPACE_PACKAGES = ['ZenPacks', 'ZenPacks.zenoss']
