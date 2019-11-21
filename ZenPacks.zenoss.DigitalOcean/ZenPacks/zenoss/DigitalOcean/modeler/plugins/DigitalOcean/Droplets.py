@@ -7,9 +7,7 @@
 #
 ##############################################################################
 
-'''
-Models Digital Ocean Droplets.
-'''
+"""Models Digital Ocean Droplets."""
 
 import digitalocean
 from twisted.internet.defer import inlineCallbacks, returnValue, DeferredList
@@ -35,12 +33,9 @@ class Droplets(PythonPlugin):
     def collect(self, device, log):
         """Model device and return a deferred."""
         log.info("%s: collecting data", device.id)
-
-        token = getattr(device, 'zDigitalOceanToken')
-
+        token = getattr(device, 'zDigitalOceanToken', None)
         if not token:
             log.error("zDigitalOceanToken not set.")
-
             returnValue(None)
 
         #Setup the Connection to Digital Oceans API endpoint.
@@ -49,8 +44,10 @@ class Droplets(PythonPlugin):
             droplets = yield manager.get_all_droplets()
         except Exception as err:
             log.error(
-                "Unable to get droplets for %s due to: %s", 
-                device.id, err)
+                "Unable to get droplets for %s due to: %s" % (
+                    device.id,
+                    err
+                ))
             returnValue(None)
 
         returnValue(droplets)
@@ -72,6 +69,7 @@ class Droplets(PythonPlugin):
                price_hourly
                price_monthly 
         """
+        log.info("Processing results for device %s." % device.id)
         rm = self.relMap()
         for droplet in droplets:
             rm.append(self.objectMap({
@@ -89,4 +87,5 @@ class Droplets(PythonPlugin):
                 'price_hourly': droplet.price_hourly,
                 'price_monthly': droplet.price_monthly
             }))
+
         return rm
