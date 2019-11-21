@@ -66,3 +66,12 @@ classes:
 
 class_relationships:
   - DigitalOceanDevice 1:MC Droplet
+
+device_class:
+  /DigitalOcean:
+    zProperties:
+      zPythonClass: ZenPacks.zenoss.DigitalOcean.Droplet.DigitalOceanDevice
+      zPingMonitorIgnore: true
+      zSnmpMonitorIgnore: true
+      zCollectorPlugins:
+        - DigitalOcean.Droplet
