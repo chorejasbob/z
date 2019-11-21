@@ -28,7 +28,7 @@ classes:
       id:
         label: Droplet ID
 
-        vcpus:
+      vcpus:
         label: VCPUs
 
       memory:
