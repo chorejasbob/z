@@ -67,7 +67,7 @@ classes:
 class_relationships:
   - DigitalOceanDevice 1:MC Droplet
 
-device_class:
+device_classes:
   /DigitalOcean:
     zProperties:
       zPythonClass: ZenPacks.zenoss.DigitalOcean.Droplet.DigitalOceanDevice
