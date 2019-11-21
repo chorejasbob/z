@@ -65,7 +65,7 @@ class_relationships:
   - DigitalOceanEndpoint 1:MC Droplet
 
 device_classes:
-  /DigitalOcean:
+  /Cloud/DigitalOcean:
     zProperties:
       zPythonClass: ZenPacks.zenoss.DigitalOcean.DigitalOceanEndpoint
       zPingMonitorIgnore: true
