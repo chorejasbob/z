@@ -25,47 +25,41 @@ classes:
     label: Droplet
 
     properties:
-      created_at:
-        label: Creation DateTime
+      id:
+        label: Droplet ID
 
-      backups:
-        label: Backups enabled
-
-      vcpus:
+        vcpus:
         label: VCPUs
+
+      memory:
+        label: Memory GB
 
       disk:
         label: Disk GB
 
-      id:
-        label: Droplet ID
-
       image:
-        label: Image ID
-      
+        label: Image
+
       ip_address:
         label: Public IP
 
       private_ip_address:
         label: Private IP
 
-      memory:
-        label: Memory GB
-
-      name:
-        label: Droplet Name
-
-      droplet_id:
-        label: Droplet ID
-
       region:
         label: Region
+      
+      backups:
+        label: Backups enabled
 
       price_hourly:
         label: Price Hourly
 
-      price_monthly:
+      price_montly:
         label: Price Monthly
+
+      created_at:
+        label: Created
 
 class_relationships:
   - DigitalOceanEndpoint 1:MC Droplet

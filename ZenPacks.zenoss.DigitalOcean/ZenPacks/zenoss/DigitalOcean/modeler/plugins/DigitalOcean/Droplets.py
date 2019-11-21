@@ -66,26 +66,30 @@ class Droplets(PythonPlugin):
                memory
                name
                region
-               price_hourly
-               price_monthly 
+               status
         """
         log.info("Processing results for device %s." % device.id)
         rm = self.relMap()
         for droplet in droplets:
             name = self.prepId(droplet.name)
+            region = self.prepId(droplet.region.get('name'))
+            image = self.prepId(droplet.image.get('name'))
             rm.append(self.objectMap({
                 'created_at': droplet.created_at,
                 'backups': droplet.backups,
                 'vcpus': droplet.vcpus,
                 'disk': droplet.disk,
-                'droplet_id': droplet.id,
-                'image': droplet.image,
+                'id': droplet.id,
+                'image': image,
                 'ip_address': droplet.ip_address,
                 'private_ip_address': droplet.private_ip_address,
                 'memory': droplet.memory,
                 'name': name,
-                'id': name,
-                'region': droplet.region
+                'region': region,
+                'status': droplet.status,
+                'tags': droplet.tags,
+                'price_hourly': droplet.size['price_hourly'],
+                'price_monthly': droplet.size['price_monthly']
             }))
 
         return rm
