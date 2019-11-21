@@ -79,7 +79,7 @@ class Droplets(PythonPlugin):
                 'backups': droplet.backups,
                 'vcpus': droplet.vcpus,
                 'disk': droplet.disk,
-                'id': droplet.id,
+                'droplet_id': droplet.id,
                 'image': image,
                 'ip_address': droplet.ip_address,
                 'private_ip_address': droplet.private_ip_address,

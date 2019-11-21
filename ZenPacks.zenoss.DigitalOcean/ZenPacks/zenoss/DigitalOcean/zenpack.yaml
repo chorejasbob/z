@@ -25,7 +25,7 @@ classes:
     label: Droplet
 
     properties:
-      id:
+      droplet_id:
         label: Droplet ID
 
       vcpus:
