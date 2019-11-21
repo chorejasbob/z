@@ -55,6 +55,9 @@ classes:
       name:
         label: Droplet Name
 
+      droplet_id:
+        label: Droplet ID
+
       region:
         label: Region
 
