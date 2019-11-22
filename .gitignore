@@ -2,3 +2,4 @@ venv/
 venv3/
 *.pyc
 .vscode
+*.egg-info
