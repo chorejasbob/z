@@ -90,7 +90,7 @@ class Droplets(PythonPlugin):
                 'status': droplet.status,
                 'tags': droplet.tags,
                 'price_hourly': droplet.size.get('price_hourly'),
-                'price_monthly': droplet.size.get('price_monthly')
+                'price_monthly': droplet.size.get('price_monthly'),
             }))
 
         return rm
