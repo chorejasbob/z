@@ -74,6 +74,8 @@ class Droplets(PythonPlugin):
             name = self.prepId(droplet.name)
             region = self.prepId(droplet.region.get('name'))
             image = self.prepId(droplet.image.get('name'))
+            log.info("Price Hourly: %s", droplet.size.get('price_hourly'))
+            log.info("Price Monthly: %s", droplet.size.get('price_'))
             rm.append(self.objectMap({
                 'id': name,
                 'created_at': droplet.created_at,
@@ -85,12 +87,11 @@ class Droplets(PythonPlugin):
                 'ip_address': droplet.ip_address,
                 'private_ip_address': droplet.private_ip_address,
                 'memory': droplet.memory,
-                'name': name,
                 'region': region,
                 'status': droplet.status,
                 'tags': droplet.tags,
-                'price_hourly': droplet.size['price_hourly'],
-                'price_monthly': droplet.size['price_monthly']
+                'price_hourly': droplet.size.get('price_hourly'),
+                'price_monthly': droplet.size.get('price_monthly')
             }))
 
         return rm

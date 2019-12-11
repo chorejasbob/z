@@ -8,7 +8,7 @@ AUTHOR = "Your Name Here"
 LICENSE = ""
 NAMESPACE_PACKAGES = ['ZenPacks', 'ZenPacks.zenoss']
 PACKAGES = ['ZenPacks', 'ZenPacks.zenoss', 'ZenPacks.zenoss.DigitalOcean']
-INSTALL_REQUIRES = ['ZenPacks.zenoss.ZenPackLib']
+INSTALL_REQUIRES = ['ZenPacks.zenoss.ZenPackLib', 'python-digitalocean']
 COMPAT_ZENOSS_VERS = ""
 PREV_ZENPACK_NAME = ""
 # STOP_REPLACEMENTS
@@ -53,9 +53,7 @@ setup(
     # list, so any manual additions should be added to the end.  Things will
     # go poorly if this line is broken into multiple lines or modified to
     # dramatically.
-    install_requires=[
-        'python-digitalocean'
-    ],
+    install_requires=INSTALL_REQUIRES,
 
     # Every ZenPack egg must define exactly one zenoss.zenpacks entry point
     # of this form.
