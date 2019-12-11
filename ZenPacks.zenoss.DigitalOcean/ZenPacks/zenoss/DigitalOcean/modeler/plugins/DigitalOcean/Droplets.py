@@ -64,7 +64,6 @@ class Droplets(PythonPlugin):
                ip_address
                private_ip_address
                memory
-               name
                region
                status
         """
