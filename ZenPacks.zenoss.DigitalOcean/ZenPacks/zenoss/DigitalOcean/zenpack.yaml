@@ -55,7 +55,7 @@ classes:
       price_hourly:
         label: Price Hourly
 
-      price_montly:
+      price_monthly:
         label: Price Monthly
 
       created_at:
