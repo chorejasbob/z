@@ -17,7 +17,30 @@ from logging import getLogger
 log = getLogger('zen.DigitalOcean')
 
 class Droplets(PythonPlugin):
-    """Digital Ocean Droplet modeler plugin."""
+    """Digital Ocean Droplet modeler plugin.
+
+ |  Attributes returned by API:
+ |      id (int): droplet id
+ |      memory (str): memory size
+ |      vcpus (int): number of vcpus
+ |      disk (int): disk size in GB
+ |      status (str): status
+ |      locked (bool): True if locked
+ |      created_at (str): creation date in format u'2014-11-06T10:42:09Z'
+ |      status (str): status, e.g. 'new', 'active', etc
+ |      networks (dict): details of connected networks
+ |      kernel (dict): details of kernel
+ |      backup_ids (:obj:`int`, optional): list of ids of backups of this droplet
+ |      snapshot_ids (:obj:`int`, optional): list of ids of snapshots of this droplet
+ |      action_ids (:obj:`int`, optional): list of ids of actions
+ |      features (:obj:`str`, optional): list of enabled features. e.g.
+ |                [u'private_networking', u'virtio']
+ |      image (dict): details of image used to create this droplet
+ |      ip_address (str): public ip addresses
+ |      private_ip_address (str): private ip address
+ |      ip_v6_address (:obj:`str`, optional): list of ipv6 addresses assigned
+ |      end_point (str): url of api endpoint used
+ |      volume_ids (:obj:`str`, optional): list of blockstorage volumes"""
 
     relname = 'droplets'
     modname = 'ZenPacks.zenoss.DigitalOcean.Droplet'
@@ -38,15 +61,22 @@ class Droplets(PythonPlugin):
                 'id': name,
                 'created_at': droplet.created_at,
                 'backups': droplet.backups,
+                'backup_ids': droplet.backup_ids,
+                'next_backup': droplet.next_backup_window.get('start'),
+                'snapshot_ids': droplet.snapshot_ids,
+                'features': droplet.features,
+                'networks': droplet.networks,
                 'vcpus': droplet.vcpus,
                 'disk': droplet.disk,
+                'volume_ids': droplet.volume_ids,
                 'droplet_id': droplet.id,
                 'image': image,
-                'ip_address': droplet.ip_address,
-                'private_ip_address': droplet.private_ip_address,
+                'public_ip': droplet.ip_address,
+                'private_ip': droplet.private_ip_address,
                 'memory': droplet.memory,
                 'region': region,
-                'status': droplet.status,
+                'droplet_status': droplet.status,
+                'droplet_locked': droplet.locked,
                 'tags': droplet.tags,
                 'price_hourly': droplet.size.get('price_hourly'),
                 'price_monthly': droplet.size.get('price_monthly'),
@@ -58,7 +88,8 @@ class Droplets(PythonPlugin):
 
     @inlineCallbacks
     def collect(self, device, log):
-        """Model device and return a deferred."""
+        """Model the Digital Ocean Droplets."""
+
         log.info("%s: collecting data", device.id)
         token = getattr(device, 'zDigitalOceanToken', None)
         if not token:
@@ -85,15 +116,21 @@ class Droplets(PythonPlugin):
                id
                created_at
                backups
+               backup_ids
+               next_backup
+               snapshot_ids
+               features
+               networks
                vcpus
                disk
+               volume_ids
                droplet_id
                image
-               ip_address
-               private_ip_address
+               public_ip
+               private_ip
                memory
                region
-               status
+               droplet_status
                tags
                price_hourly
                price_monthly

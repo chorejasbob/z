@@ -25,41 +25,68 @@ classes:
     label: Droplet
 
     properties:
-      droplet_id:
-        label: Droplet ID
+      created_at:
+        label: Created
+
+      backups:
+        label: Backups Enabled
+
+      backup_ids:
+        label: Backup IDs
+
+      next_backup:
+        label: Next Backup
+
+      snapshot_ids:
+        label: Snapshot IDs
+
+      features:
+        label: Features
+
+      networks:
+        label: Networks
 
       vcpus:
         label: VCPUs
 
-      memory:
-        label: Memory GB
-
       disk:
         label: Disk GB
+
+      volume_ids:
+        label: Volume IDs
+
+      droplet_id:
+        label: Droplet ID
 
       image:
         label: Image
 
-      ip_address:
+      public_ip:
         label: Public IP
 
-      private_ip_address:
+      private_ip:
         label: Private IP
+
+      memory:
+        label: Memory GB
+
+      droplet_status:
+        label: Droplet Status
+
+      droplet_locked:
+        label: Droplet Locked
+
+      tags:
+        label: Tags
 
       region:
         label: Region
-      
-      backups:
-        label: Backups enabled
 
       price_hourly:
         label: Price Hourly
 
       price_monthly:
         label: Price Monthly
-
-      created_at:
-        label: Created
 
 class_relationships:
   - DigitalOceanEndpoint 1:MC Droplet
