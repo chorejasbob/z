@@ -14,7 +14,7 @@ from twisted.internet.defer import inlineCallbacks, returnValue, DeferredList
 from Products.DataCollector.plugins.CollectorPlugin import PythonPlugin
 from logging import getLogger
 
-log = getLogger('zen.DigitalOcean')
+log = getLogger('zen.DigitalOcean.Droplets')
 
 class Droplets(PythonPlugin):
     """Digital Ocean Droplet modeler plugin.
@@ -102,10 +102,10 @@ class Droplets(PythonPlugin):
             droplets = yield manager.get_all_droplets()
         except Exception, e:
             log.error(
-                "Unable to get droplets for %s due to: %s" % (
+                "Unable to retreive droplets for %s due to: %s" % (
                     device.id,
-                    e.message)
-                )
+                    e.message
+                ))
             returnValue(None)
 
         returnValue(droplets)
