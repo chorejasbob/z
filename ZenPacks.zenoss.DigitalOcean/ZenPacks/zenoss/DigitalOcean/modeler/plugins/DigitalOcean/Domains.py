@@ -70,3 +70,5 @@ class Domains(PythonPlugin):
                             }))
                 except Exception, e:
                     log.error("Error creating relMap: %s" % e.message)
+
+            return rm
