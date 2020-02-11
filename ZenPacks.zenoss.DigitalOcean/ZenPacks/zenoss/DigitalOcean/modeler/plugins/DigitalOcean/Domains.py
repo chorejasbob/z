@@ -42,7 +42,7 @@ class Domains(PythonPlugin):
         #Setup the Connection to the Digital Ocean API endpoint.
         try:
             manager = digitalocean.Manager(token=token)
-            domains = manager.get_all_domains()
+            domains = yield manager.get_all_domains()
         except Exception, e:
             log.error("Unable to retreive Domains due to: %s" % (
                 e.message
