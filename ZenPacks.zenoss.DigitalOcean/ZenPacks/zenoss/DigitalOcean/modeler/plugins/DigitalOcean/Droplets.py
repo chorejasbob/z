@@ -145,7 +145,7 @@ class Droplets(PythonPlugin):
             if droplet:
                 try:
                     rm.append(
-                        self.objectMap(buildObjectMap(droplet))
+                        self.objectMap(self.buildObjectMap(droplet))
                         )
                 except Exception, e:
                     log.error("Problem creating relMap: %s", e)
