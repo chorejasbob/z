@@ -16,7 +16,7 @@ from logging import getLogger
 
 log = getLogger('zen.DigitalOcean.Domains')
 
-class Domain(PythonPlugin):
+class Domains(PythonPlugin):
     """Digital Ocean Domains modeler plugin."""
 
     relname = 'domains'
