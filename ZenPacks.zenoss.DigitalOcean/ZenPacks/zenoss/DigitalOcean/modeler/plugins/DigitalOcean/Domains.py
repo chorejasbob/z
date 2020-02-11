@@ -7,20 +7,20 @@
 #
 ##############################################################################
 
-"""Models Digital Ocean DNS."""
+"""Models Digital Ocean Domains."""
 
 import digitalocean
 from twisted.internet.defer import inlineCallbacks, returnValue, DeferredList
 from Products.DataCollector.plugins.CollectorPlugin import PythonPlugin
 from logging import getLogger
 
-log = getLogger('zen.DigitalOcean.Dns')
+log = getLogger('zen.DigitalOcean.Domains')
 
-class Dns(PythonPlugin):
-    """Digital Ocean Dns modeler plugin."""
+class Domain(PythonPlugin):
+    """Digital Ocean Domains modeler plugin."""
 
-    relname = 'dns'
-    modname = 'ZenPacks.zenoss.DigitalOcean.Dns'
+    relname = 'domains'
+    modname = 'ZenPacks.zenoss.DigitalOcean.Domain'
 
     requiredProperties = (
         'zDigitalOceanToken',
@@ -31,7 +31,7 @@ class Dns(PythonPlugin):
 
     @inlineCallbacks
     def collect(self, device, log):
-        """Model Digital Ocean Dns."""
+        """Model Digital Ocean Domains."""
 
         log.info("%s: collecting data", device.id)
         token = getattr(device, 'zDigitalOceanToken', None)
@@ -44,7 +44,7 @@ class Dns(PythonPlugin):
             manager = digitalocean.Manager(token=token)
             domains = manager.get_all_domains()
         except Exception, e:
-            log.error("Unable to retreive Dns due to: %s" % (
+            log.error("Unable to retreive Domains due to: %s" % (
                 e.message
                 ))
             returnValue(None)
@@ -52,7 +52,7 @@ class Dns(PythonPlugin):
         returnValue(domains)
 
     def process(self, device, domains, log):
-        """Process Dns returned from API endpoint."""
+        """Process Domains returned from API endpoint."""
         if domains:
             rm = self.relMap()
             for domain in domains:
