@@ -148,6 +148,6 @@ class Droplets(PythonPlugin):
                         self.objectMap(buildObjectMap(droplet))
                         )
                 except Exception, e:
-                    log.error("Problem encountered: %s", e)
+                    log.error("Problem creating relMap: %s", e)
 
         return rm

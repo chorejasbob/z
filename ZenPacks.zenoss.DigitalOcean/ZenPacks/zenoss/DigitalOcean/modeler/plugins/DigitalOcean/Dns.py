@@ -46,11 +46,27 @@ class Dns(PythonPlugin):
         except Exception, e:
             log.error("Unable to retreive Dns due to: %s" % (
                 e.message
-            ))
+                ))
             returnValue(None)
         
         returnValue(domains)
 
     def process(self, device, domains, log):
         """Process Dns returned from API endpoint."""
-        
+        if domains:
+            rm = self.relMap()
+            for domain in domains:
+                try:
+                    name = self.prepId(domain.name)
+                    ttl = domain.ttl
+                    zone_file = domain.zone_file
+                    records = len(domain.get_records())
+                    rm.append(self.objectMap(
+                        data = {
+                            'id': name,
+                            'records': records,
+                            'ttl': ttl,
+                            'zone_file': zone_file,
+                            }))
+                except Exception, e:
+                    log.error("Error creating relMap: %s" % e.message)
