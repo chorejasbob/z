@@ -101,6 +101,10 @@ classes:
       records:
         label: Records
 
+      zone_file:
+        label: Zone File
+        grid_display: false
+
 class_relationships:
   - DigitalOceanEndpoint 1:MC Droplet
   - DigitalOceanEndpoint 1:MC Domain
