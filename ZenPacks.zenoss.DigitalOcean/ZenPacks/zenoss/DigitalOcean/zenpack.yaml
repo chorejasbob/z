@@ -13,6 +13,22 @@ zProperties:
     description: "api token for accessing your Digital Ocean account."
     type: string
 
+  zDigitalOceanUseSshKeys:
+    description: "Enable or disable use of SSH keys for collection."
+    type: boolean
+
+  zDigitalOceanSshPrivateKey:
+    description: "SSH private key for collecting against SSH based droplets."
+    type: password
+
+  zDigitalOceanSshUserName:
+    description: "SSH user name."
+    type: string
+
+  zDigitalOceanSshPassword:
+    description: "SSH password."
+    type: password
+
 classes:
   DEFAULTS:
     base: [zenpacklib.Component]
